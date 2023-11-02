@@ -1,11 +1,12 @@
 #include <iostream>
 #include <memory>
 #include "Section.h"
-class CreatorSection
+
+class SectionFactory
 {
 public:
-    CreatorSection() = default;
-    virtual ~CreatorSection() = default;
+    SectionFactory() = default;
+    virtual ~SectionFactory() = default;
 
     virtual std::unique_ptr<Section> GetSection() const = 0;
 
@@ -16,11 +17,11 @@ public:
     }
 };
 
-class CreatorConcreteSection : public CreatorSection
+class ConcreteSectionFactory : public SectionFactory
 {
 public:
-    CreatorConcreteSection() = default;
-    virtual ~CreatorConcreteSection() = default;
+    ConcreteSectionFactory() = default;
+    virtual ~ConcreteSectionFactory() = default;
 
     std::unique_ptr<Section> GetSection() const override
     {
@@ -28,11 +29,11 @@ public:
     }
 };
 
-class CreatorSteelSection : public CreatorSection
+class SteelSectionFactory : public SectionFactory
 {
 public:
-    CreatorSteelSection() = default;
-    virtual ~CreatorSteelSection() = default;
+    SteelSectionFactory() = default;
+    virtual ~SteelSectionFactory() = default;
 
     std::unique_ptr<Section> GetSection() const override
     {
@@ -40,11 +41,11 @@ public:
     }
 };
 
-class CreatorWoodSection : public CreatorSection
+class WoodSectionFactory : public SectionFactory
 {
 public:
-    CreatorWoodSection() = default;
-    virtual ~CreatorWoodSection() = default;
+    WoodSectionFactory() = default;
+    virtual ~WoodSectionFactory() = default;
 
     std::unique_ptr<Section> GetSection() const override
     {
