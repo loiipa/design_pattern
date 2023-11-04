@@ -3,7 +3,6 @@
 class GraphCommand
 {
 public:
-    GraphCommand(std::shared_ptr<GraphReceiver> receiver): receiver(receiver) {};
     virtual ~GraphCommand() = default;
     virtual void Execute() = 0;
 
@@ -13,6 +12,12 @@ protected:
 
 class DrawCommand : public GraphCommand
 {
+public:
+    DrawCommand(const std::shared_ptr<GraphReceiver>& receiver)
+    {
+        this->receiver = receiver;
+    }
+
     void Execute() override
     {
         receiver->ActionDraw();
@@ -21,6 +26,12 @@ class DrawCommand : public GraphCommand
 
 class ClearCommand : public GraphCommand
 {
+public:
+    ClearCommand(const std::shared_ptr<GraphReceiver>& receiver)
+    {
+        this->receiver = receiver;
+    }
+    
     void Execute() override
     {
         receiver->ActionClear();
@@ -29,6 +40,12 @@ class ClearCommand : public GraphCommand
 
 class ZoomInCommand : public GraphCommand
 {
+public:
+    ZoomInCommand(const std::shared_ptr<GraphReceiver>& receiver)
+    {
+        this->receiver = receiver;
+    }
+
     void Execute() override
     {
         receiver->ActionZoomIn();
@@ -37,6 +54,12 @@ class ZoomInCommand : public GraphCommand
 
 class ZoomOutCommand : public GraphCommand
 {
+public:
+    ZoomOutCommand(const std::shared_ptr<GraphReceiver>& receiver)
+    {
+        this->receiver = receiver;
+    }
+
     void Execute() override
     {
         receiver->ActionZoomOut();
